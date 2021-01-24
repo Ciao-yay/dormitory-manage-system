@@ -1,102 +1,123 @@
 <template>
   <div class="projects">
     <div class="projectsHeader">
-      <el-button type="primary" icon="el-icon-circle-plus-outline" size="mini"
-        >创建新项目</el-button
-      >
-      <el-breadcrumb separator="/" class="breadcrumb">
-        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-        <el-breadcrumb-item><a href="/">项目管理</a></el-breadcrumb-item>
-        <el-breadcrumb-item>所有项目</el-breadcrumb-item>
-      </el-breadcrumb>
-    </div>
-    <el-divider></el-divider>
-    <!-- 项目列表 -->
-    <div class="projectsContent">
-      <div class="project">
-        <img
-          src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-          alt=""
-        />
-        <div class="describe">
-          项目一
+      <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
+        <el-tab-pane label="所有项目" name="first">
+          <!-- 项目列表 -->
+          <div class="projectsContent">
+            <div class="project">
+              <img
+                src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+                alt=""
+              />
+              <div class="describe">
+                项目一
 
-          <button class="delete"><i class="el-icon-delete"></i></button>
-          <button class="change"><i class="el-icon-edit"></i></button>
-        </div>
-      </div>
-      <div class="project">
-        <img
-          src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-          alt=""
-        />
-        <div class="describe">
-          项目一
+                <button class="delete"><i class="el-icon-delete"></i></button>
+                <button class="change"><i class="el-icon-edit"></i></button>
+              </div>
+            </div>
+            <div class="project">
+              <img
+                src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+                alt=""
+              />
+              <div class="describe">
+                项目一
 
-          <button class="delete"><i class="el-icon-delete"></i></button>
-          <button class="change"><i class="el-icon-edit"></i></button>
-        </div>
-      </div>
-      <div class="project">
-        <img
-          src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-          alt=""
-        />
-        <div class="describe">
-          项目一
+                <button class="delete"><i class="el-icon-delete"></i></button>
+                <button class="change"><i class="el-icon-edit"></i></button>
+              </div>
+            </div>
+            <div class="project">
+              <img
+                src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+                alt=""
+              />
+              <div class="describe">
+                项目一
 
-          <button class="delete"><i class="el-icon-delete"></i></button>
-          <button class="change"><i class="el-icon-edit"></i></button>
-        </div>
-      </div>
-      <div class="project">
-        <img
-          src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-          alt=""
-        />
-        <div class="describe">
-          项目一
+                <button class="delete"><i class="el-icon-delete"></i></button>
+                <button class="change"><i class="el-icon-edit"></i></button>
+              </div>
+            </div>
+            <div class="project">
+              <img
+                src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+                alt=""
+              />
+              <div class="describe">
+                项目一
 
-          <button class="delete"><i class="el-icon-delete"></i></button>
-          <button class="change"><i class="el-icon-edit"></i></button>
-        </div>
-      </div>
-      <div class="project">
-        <img
-          src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-          alt=""
-        />
-        <div class="describe">
-          项目一
+                <button class="delete"><i class="el-icon-delete"></i></button>
+                <button class="change"><i class="el-icon-edit"></i></button>
+              </div>
+            </div>
+            <div class="project">
+              <img
+                src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+                alt=""
+              />
+              <div class="describe">
+                项目一
 
-          <button class="delete"><i class="el-icon-delete"></i></button>
-          <button class="change"><i class="el-icon-edit"></i></button>
-        </div>
-      </div>
-      <div class="project">
-        <img
-          src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-          alt=""
-        />
-        <div class="describe">
-          项目一
+                <button class="delete"><i class="el-icon-delete"></i></button>
+                <button class="change"><i class="el-icon-edit"></i></button>
+              </div>
+            </div>
+            <div class="project">
+              <img
+                src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+                alt=""
+              />
+              <div class="describe">
+                项目一
 
-          <button class="delete"><i class="el-icon-delete"></i></button>
-          <button class="change"><i class="el-icon-edit"></i></button>
-        </div>
-      </div>
-      <div class="project">
-        <img
-          src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-          alt=""
-        />
-        <div class="describe">
-          项目一
+                <button class="delete"><i class="el-icon-delete"></i></button>
+                <button class="change"><i class="el-icon-edit"></i></button>
+              </div>
+            </div>
+            <div class="project">
+              <img
+                src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+                alt=""
+              />
+              <div class="describe">
+                项目一
 
-          <button class="delete"><i class="el-icon-delete"></i></button>
-          <button class="change"><i class="el-icon-edit"></i></button>
-        </div>
-      </div>
+                <button class="delete"><i class="el-icon-delete"></i></button>
+                <button class="change"><i class="el-icon-edit"></i></button>
+              </div>
+            </div>
+          </div>
+        </el-tab-pane>
+        <el-tab-pane label="添加新项目" name="second">
+          <div class="newProject">
+            <el-form
+              :label-position="labelPosition"
+              label-width="80px"
+              :model="formData"
+            >
+              <el-form-item label="项目编号">
+                <el-input v-model="formData.id"></el-input>
+              </el-form-item>
+              <el-form-item label="项目名称">
+                <el-input v-model="formData.name"></el-input>
+              </el-form-item>
+              <el-form-item label="楼栋数量">
+                <el-input v-model="formData.count"></el-input>
+              </el-form-item>
+              <el-form-item label="楼栋数量">
+                <el-input v-model="formData.count"></el-input>
+              </el-form-item>
+              <el-form-item>
+                <el-button type="primary" @click="onSubmit">立即创建</el-button>
+                <el-button>取消</el-button>
+              </el-form-item>
+            </el-form>
+          </div>
+        </el-tab-pane>
+      </el-tabs>
     </div>
   </div>
 </template>
@@ -105,11 +126,20 @@ export default {
   data() {
     return {
       activeName: "first",
+      labelPosition: "right",
+      formData: {
+        name: "",
+        region: "",
+        type: "",
+      },
     };
   },
   methods: {
     handleClick(tab, event) {
       console.log(tab, event);
+    },
+    onSubmit() {
+      console.log("submit!");
     },
   },
 };
@@ -155,5 +185,8 @@ export default {
 }
 .project .delete {
   background-color: #f56c6c;
+}
+.newProject {
+  width: 50%;
 }
 </style>
