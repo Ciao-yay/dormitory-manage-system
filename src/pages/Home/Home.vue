@@ -7,7 +7,9 @@
         </div></el-col
       >
       <el-col :span="2"
-        ><div class="grid-content bg-purple-light">退出</div></el-col
+        ><div class="grid-content bg-purple-light logout" @click="logout">
+          退出
+        </div></el-col
       >
     </el-header>
     <el-container>
@@ -32,18 +34,18 @@
                 index="2"
                 @click="$router.replace('/home/jurisdiction')"
               >
-              <i class="el-icon-key"></i>
+                <i class="el-icon-key"></i>
                 <span slot="title">权限管理</span>
               </el-menu-item>
               <el-menu-item index="3" @click="$router.replace('/home/checkin')">
-              <i class="el-icon-top-right"></i>
+                <i class="el-icon-top-right"></i>
                 <span slot="title">入住管理</span>
               </el-menu-item>
               <el-menu-item
                 index="4"
                 @click="$router.replace('/home/maintain')"
               >
-              <i class="el-icon-s-tools"></i>
+                <i class="el-icon-s-tools"></i>
                 <span slot="title">维修管理</span>
               </el-menu-item>
             </el-menu>
@@ -59,8 +61,36 @@
   </el-container>
 </template>
 <script>
+import { reqLogout } from "../../api";
 export default {
-
+  data() {
+    return {};
+  },
+  methods: {
+    logout() {
+      this.$confirm("是否退出并清空缓存?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          reqLogout();
+          this.$router.replace("/login");
+          this.$message({
+            showClose: true,
+            type: "error",
+            message: "退出成功!",
+          });
+        })
+        .catch(() => {
+          this.$message({
+            showClose: true,
+            type: "info",
+            message: "已取消",
+          });
+        });
+    },
+  },
 };
 </script>
 <style >
@@ -72,6 +102,11 @@ export default {
   color: #333;
   text-align: center;
   line-height: 60px;
+}
+.logout:hover {
+  /* color: white; */
+  transition: background-color 0.5s;
+  background-color: #a9b0b8;
 }
 .aside {
   background-color: #d3dce6;
