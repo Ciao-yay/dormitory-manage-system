@@ -61,7 +61,7 @@
   </el-container>
 </template>
 <script>
-import { reqLogout } from "../../api";
+import {mapState} from 'vuex'
 export default {
   data() {
     return {};
@@ -74,7 +74,7 @@ export default {
         type: "warning",
       })
         .then(() => {
-          reqLogout();
+          this.$store.dispatch("logout");
           this.$router.replace("/login");
           this.$message({
             showClose: true,

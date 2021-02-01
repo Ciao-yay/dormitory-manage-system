@@ -5,10 +5,13 @@ import ajax from './ajax'
 const BASIC_URL = '/api'
 const PROJECTS_URL = `${BASIC_URL}/projects`
 const USERS_URL = `${BASIC_URL}/users`
-
 // 用户模块
+// 是否认证
+export const reqAuthState = () => ajax(`${USERS_URL}/authState`)
 // 登录
 export const reqLogin = data => ajax(`${USERS_URL}/login`, data, 'POST')
+// 获取用户信息
+export const reqUserInfo = () => ajax(`${USERS_URL}/userInfo`)
 // 退出
 export const reqLogout = () => ajax(`${USERS_URL}/logout`)
 // 查看用户

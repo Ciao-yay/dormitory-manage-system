@@ -46,6 +46,7 @@ export default {
           result = result.data;
           this.fullscreenLoading = false;
           if (result.code === 1) {
+            this.$store.dispatch('getUserInfo')
             this.open2();
             this.$router.replace("/home");
           } else {
@@ -57,7 +58,7 @@ export default {
           console.log(e);
         }
       } else {
-        this.fullscreenLoading = true;
+        this.fullscreenLoading = false;
         alert("请输入账号或密码");
       }
     },

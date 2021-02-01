@@ -70,12 +70,18 @@
   </div>
 </template>
 <script>
-import { showUsers, removeUser } from "../../../api";
+import { mapState } from "vuex";
+import {removeUser } from "../../../api";
 export default {
+  computed: {
+    ...mapState(["users"]),
+  },
+  mounted(){
+    this.$store.dispatch('getUsers')
+  },
   data() {
     return {
       activeName: "first",
-      users: [],
       currentRow: null,
       dialogFormVisible: false,
       user: {
@@ -91,9 +97,6 @@ export default {
       formLabelWidth: "120px",
     };
   },
-  async mounted() {
-    await this.initUsers();
-  },
   methods: {
     handleCurrentChange(val) {
       this.currentRow = val;
@@ -107,57 +110,38 @@ export default {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning",
-      })
-        .then(async () => {
-          try {
-            let result = await removeUser(row.id);
-            const {
-              data: { code },
-            } = result;
-            if (code === 1) {
-              await this.initUsers();
-              this.$message({
-                showClose: true,
-                type: "success",
-                message: "移除成功!",
-              });
-            } else {
-              console.log(code, result);
-              this.$message({
-                showClose: true,
-                type: "error",
-                message: "移除失败！",
-              });
-            }
-          } catch (e) {
-            console.log(e);
+      }).then(async () => {
+        try {
+          let result = await removeUser(row.id);
+          const {
+            data: { code },
+          } = result;
+          if (code === 1) {
+            await this.initUsers();
+            this.$message({
+              showClose: true,
+              type: "success",
+              message: "移除成功!",
+            });
+          } else {
+            console.log(code, result);
             this.$message({
               showClose: true,
               type: "error",
               message: "移除失败！",
             });
           }
-        })
-        .catch(() => {
+        } catch (e) {
+          console.log(e);
           this.$message({
             showClose: true,
-            type: "info",
-            message: "已取消",
+            type: "error",
+            message: "移除失败！",
           });
-        });
-    },
-    async initUsers() {
-      try {
-        let result = await showUsers();
-        result = result.data;
-        if (result.code === 1) {
-          this.users = result.data;
-        } else {
-          console.log("没有数据");
         }
-      } catch (e) {
-        console.log(e);
-      }
+      });
+      // 点击取消后的回调
+      // .catch(() => {});
     },
   },
 };
